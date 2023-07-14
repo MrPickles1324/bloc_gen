@@ -1,9 +1,12 @@
-use std::{env, fs::File, io::Write};
+use std::{env, fs::File, io::Write, process::exit};
 
 use bloc_gen::util::uppercase_first_letter;
 
 fn main() -> anyhow::Result<()> {
-    let name = env::args().nth(1).expect("please specify bloc name");
+    let name = env::args().nth(1).unwrap_or_else(|| {
+        println!("please specify bloc name");
+        exit(1);
+    });
 
     let capitalized_name = uppercase_first_letter(name.as_str());
 
