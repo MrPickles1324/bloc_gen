@@ -4,7 +4,7 @@ use bloc_gen::util::uppercase_first_letter;
 
 fn main() -> anyhow::Result<()> {
     let name = env::args().nth(1).unwrap_or_else(|| {
-        println!("please specify bloc name");
+        println!("Please specify cubit name");
         exit(1);
     });
 
