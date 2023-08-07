@@ -16,9 +16,8 @@ fn main() -> anyhow::Result<()> {
         "import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part '{name}_bloc.freezed.dart';
+part '{name}_cubit.freezed.dart';
 part '{name}_state.dart';
-part '{name}_event.dart';
 
 class {capitalized_name}Cubit extends Cubit<{capitalized_name}State> {{
   {capitalized_name}Cubit() : super(const {capitalized_name}State.initial());
@@ -28,7 +27,7 @@ class {capitalized_name}Cubit extends Cubit<{capitalized_name}State> {{
     println!("creating {name}_state.dart");
     let mut state_file = File::create(format!("{name}_state.dart"))?;
     state_file.write_fmt(format_args!(
-        "part of '{name}_bloc.dart';
+        "part of '{name}_cubit.dart';
 
 @freezed
 class {capitalized_name}State with _${capitalized_name}State {{
